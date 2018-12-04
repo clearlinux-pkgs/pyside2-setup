@@ -1,0 +1,14 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+python3-dev
+llvm-dev
+qtbase-dev
+buildreq-kde
+libxslt
+libxslt-dev
+libxml2
+libxml2-dev
+numpy
+qtwebengine-dev
+Sphinx
+llvm
