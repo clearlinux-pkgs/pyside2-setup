@@ -12,3 +12,4 @@ numpy
 qtwebengine-dev
 Sphinx
 llvm
+idna
