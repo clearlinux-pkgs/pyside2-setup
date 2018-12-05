@@ -13,3 +13,5 @@ qtwebengine-dev
 Sphinx
 llvm
 idna
+pyside2-setup-dev
+graphviz
