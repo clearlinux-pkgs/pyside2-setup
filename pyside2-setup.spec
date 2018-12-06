@@ -4,7 +4,7 @@
 #
 Name     : pyside2-setup
 Version  : 5.11.2
-Release  : 4
+Release  : 5
 URL      : http://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.11.2-src/pyside-setup-everywhere-src-5.11.2.tar.xz
 Source0  : http://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.11.2-src/pyside-setup-everywhere-src-5.11.2.tar.xz
 Summary  : Support library for Python bindings of Qt5-based libraries.
@@ -126,7 +126,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1544017142
+export SOURCE_DATE_EPOCH=1544106101
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -171,6 +171,14 @@ make  %{?_smp_mflags}
 %make_install
 popd
 popd
+pushd sources/pyside2-tools
+mkdir build
+pushd build
+%cmake ..
+make  %{?_smp_mflags}
+%make_install
+popd
+popd
 ## install_append end
 
 %files
@@ -178,6 +186,8 @@ popd
 
 %files bin
 %defattr(-,root,root,-)
+/usr/bin/pyside2-lupdate
+/usr/bin/pyside2-rcc
 /usr/bin/pyside2-uic
 /usr/bin/shiboken2
 
@@ -437,6 +447,9 @@ popd
 
 %files man
 %defattr(0644,root,root,0755)
+/usr/share/man/man1/pyside2-lupdate.1
+/usr/share/man/man1/pyside2-rcc.1
+/usr/share/man/man1/pyside2-uic.1
 /usr/share/man/man1/shiboken2.1
 
 %files python
