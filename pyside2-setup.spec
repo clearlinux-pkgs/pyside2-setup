@@ -4,14 +4,16 @@
 #
 Name     : pyside2-setup
 Version  : 5.11.2
-Release  : 10
+Release  : 11
 URL      : http://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.11.2-src/pyside-setup-everywhere-src-5.11.2.tar.xz
 Source0  : http://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.11.2-src/pyside-setup-everywhere-src-5.11.2.tar.xz
 Summary  : Support library for Python bindings of Qt5-based libraries.
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.3 GPL-2.0 GPL-3.0 LGPL-2.1 LGPL-3.0
 Requires: pyside2-setup-bin = %{version}-%{release}
+Requires: pyside2-setup-lib = %{version}-%{release}
 Requires: pyside2-setup-license = %{version}-%{release}
+Requires: pyside2-setup-man = %{version}-%{release}
 Requires: pyside2-setup-python = %{version}-%{release}
 Requires: pyside2-setup-python3 = %{version}-%{release}
 BuildRequires : Sphinx
@@ -28,6 +30,7 @@ BuildRequires : libxslt-dev
 BuildRequires : llvm
 BuildRequires : llvm-dev
 BuildRequires : numpy
+BuildRequires : pyside2-setup-dev
 BuildRequires : python3-dev
 BuildRequires : qtbase-dev
 BuildRequires : qtwebengine-dev
@@ -49,6 +52,7 @@ bin components for the pyside2-setup package.
 %package dev
 Summary: dev components for the pyside2-setup package.
 Group: Development
+Requires: pyside2-setup-lib = %{version}-%{release}
 Requires: pyside2-setup-bin = %{version}-%{release}
 Provides: pyside2-setup-devel = %{version}-%{release}
 Requires: pyside2-setup = %{version}-%{release}
@@ -57,12 +61,29 @@ Requires: pyside2-setup = %{version}-%{release}
 dev components for the pyside2-setup package.
 
 
+%package lib
+Summary: lib components for the pyside2-setup package.
+Group: Libraries
+Requires: pyside2-setup-license = %{version}-%{release}
+
+%description lib
+lib components for the pyside2-setup package.
+
+
 %package license
 Summary: license components for the pyside2-setup package.
 Group: Default
 
 %description license
 license components for the pyside2-setup package.
+
+
+%package man
+Summary: man components for the pyside2-setup package.
+Group: Default
+
+%description man
+man components for the pyside2-setup package.
 
 
 %package python
@@ -93,7 +114,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552756448
+export SOURCE_DATE_EPOCH=1552758010
 export LDFLAGS="${LDFLAGS} -fno-lto"
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
@@ -123,6 +144,16 @@ python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
+## install_append content
+pushd sources/shiboken2
+mkdir build
+pushd build
+%cmake ..
+make %{?_smp_mflags}
+%make_install
+popd
+popd
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -130,9 +161,34 @@ echo ----[ mark ]----
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/pyside2-uic
+/usr/bin/shiboken2
 
 %files dev
 %defattr(-,root,root,-)
+/usr/include/shiboken2/autodecref.h
+/usr/include/shiboken2/basewrapper.h
+/usr/include/shiboken2/bindingmanager.h
+/usr/include/shiboken2/bufferprocs_py37.h
+/usr/include/shiboken2/gilstate.h
+/usr/include/shiboken2/helper.h
+/usr/include/shiboken2/pep384impl.h
+/usr/include/shiboken2/python25compat.h
+/usr/include/shiboken2/qapp_macro.h
+/usr/include/shiboken2/sbkarrayconverter.h
+/usr/include/shiboken2/sbkconverter.h
+/usr/include/shiboken2/sbkdbg.h
+/usr/include/shiboken2/sbkenum.h
+/usr/include/shiboken2/sbkmodule.h
+/usr/include/shiboken2/sbkpython.h
+/usr/include/shiboken2/sbkstring.h
+/usr/include/shiboken2/sbkversion.h
+/usr/include/shiboken2/shiboken.h
+/usr/include/shiboken2/shibokenbuffer.h
+/usr/include/shiboken2/shibokenmacros.h
+/usr/include/shiboken2/signature.h
+/usr/include/shiboken2/threadstatesaver.h
+/usr/include/shiboken2/typespec.h
+/usr/include/shiboken2/voidptr.h
 /usr/lib/python3.7/site-packages/PySide2/include/PySide2/Qt3DAnimation/pyside2_qt3danimation_python.h
 /usr/lib/python3.7/site-packages/PySide2/include/PySide2/Qt3DCore/pyside2_qt3dcore_python.h
 /usr/lib/python3.7/site-packages/PySide2/include/PySide2/Qt3DExtras/pyside2_qt3dextras_python.h
@@ -211,6 +267,16 @@ echo ----[ mark ]----
 /usr/lib/python3.7/site-packages/PySide2/include/shiboken2/threadstatesaver.h
 /usr/lib/python3.7/site-packages/PySide2/include/shiboken2/typespec.h
 /usr/lib/python3.7/site-packages/PySide2/include/shiboken2/voidptr.h
+/usr/lib64/cmake/Shiboken2-5.11.2/Shiboken2Config.cmake
+/usr/lib64/cmake/Shiboken2-5.11.2/Shiboken2Config.cpython-37m-x86_64-linux-gnu.cmake
+/usr/lib64/cmake/Shiboken2-5.11.2/Shiboken2ConfigVersion.cmake
+/usr/lib64/libshiboken2.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/pkgconfig/shiboken2.pc
+
+%files lib
+%defattr(-,root,root,-)
+/usr/lib64/libshiboken2.cpython-37m-x86_64-linux-gnu.so.5.11
+/usr/lib64/libshiboken2.cpython-37m-x86_64-linux-gnu.so.5.11.2
 
 %files license
 %defattr(0644,root,root,0755)
@@ -231,6 +297,10 @@ echo ----[ mark ]----
 /usr/share/package-licenses/pyside2-setup/sources_shiboken2_COPYING
 /usr/share/package-licenses/pyside2-setup/sources_shiboken2_COPYING.libsample
 /usr/share/package-licenses/pyside2-setup/sources_shiboken2_COPYING.libshiboken
+
+%files man
+%defattr(0644,root,root,0755)
+/usr/share/man/man1/shiboken2.1
 
 %files python
 %defattr(-,root,root,-)
