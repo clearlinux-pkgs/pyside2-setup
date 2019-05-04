@@ -1,17 +1,18 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
-python3-dev
-llvm-dev
-qtbase-dev
+Sphinx
 buildreq-kde
-libxslt
-libxslt-dev
+graphviz
+idna
 libxml2
 libxml2-dev
-numpy
-qtwebengine-dev
-Sphinx
+libxslt
+libxslt-dev
 llvm
-idna
-pyside2-setup-dev
-graphviz
+llvm-dev
+numpy
+#pyside2-setup-dev
+python3-dev
+qtbase-dev
+qtwebengine-dev
+qttools-staticdev

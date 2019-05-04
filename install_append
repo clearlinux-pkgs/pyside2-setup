@@ -1,4 +1,4 @@
-
+if false; then
 pushd sources/shiboken2
 mkdir build
 pushd build
@@ -26,3 +26,4 @@ make  %{?_smp_mflags}
 popd
 popd
 
+fi
