@@ -7,7 +7,6 @@ make %{?_smp_mflags}
 popd
 popd
 
-if false; then
 pushd sources/pyside2
 mkdir build
 pushd build
@@ -17,6 +16,7 @@ make  %{?_smp_mflags}
 popd
 popd
 
+if false; then
 pushd sources/pyside2-tools
 mkdir build
 pushd build
