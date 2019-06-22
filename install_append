@@ -1,26 +1,35 @@
-pushd sources/shiboken2
-mkdir build
-pushd build
-%cmake ..
-make %{?_smp_mflags}
-%make_install
-popd
-popd
+# -*- sh -*-
+stage=1
 
-pushd sources/pyside2
-mkdir build
-pushd build
-%cmake ..
-make  %{?_smp_mflags}
-%make_install
-popd
-popd
+if [ $stage -gt 1 ]; then
+    pushd sources/shiboken2
+    mkdir build
+    pushd build
+    %cmake ..
+    make %{?_smp_mflags}
+    %make_install
+    popd
+    popd
 
-pushd sources/pyside2-tools
-mkdir build
-pushd build
-%cmake ..
-make  %{?_smp_mflags}
-%make_install
-popd
-popd
+    if [ $stage -gt 2 ]; then
+        pushd sources/pyside2
+        mkdir build
+        pushd build
+        %cmake ..
+        make  %{?_smp_mflags}
+        %make_install
+        popd
+        popd
+
+        if [ $stage -gt 3 ]; then
+            pushd sources/pyside2-tools
+            mkdir build
+            pushd build
+            %cmake ..
+            make  %{?_smp_mflags}
+            %make_install
+            popd
+            popd
+        fi
+    fi
+fi
