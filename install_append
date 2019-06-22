@@ -1,5 +1,5 @@
 # -*- sh -*-
-stage=2
+stage=3
 
 if [ $stage -gt 1 ]; then
     pushd sources/shiboken2
@@ -15,7 +15,7 @@ if [ $stage -gt 1 ]; then
         pushd sources/pyside2
         mkdir build
         pushd build
-        %cmake ..
+        %cmake .. -DPYTHON_EXECUTABLE=/usr/bin/python3
         make  %{?_smp_mflags}
         %make_install
         popd
