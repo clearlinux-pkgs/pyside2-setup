@@ -1,20 +1,6 @@
-From 42619d906eb795b66c28f703a25621cafe102296 Mon Sep 17 00:00:00 2001
-From: Thiago Macieira <thiago.macieira@intel.com>
-Date: Sat, 16 Mar 2019 08:36:28 -0700
-Subject: [PATCH] Fix build in Clear
-
-get_config_var("libdir") returns the path where the Python modules are
-located, not where the library itself is. (/usr/lib/python3.7 vs
-/usr/lib64/libpython3.7m.so.1.0)
----
- build_scripts/main.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/build_scripts/main.py b/build_scripts/main.py
-index 4d9f95b1..f91c51af 100644
---- a/build_scripts/main.py
-+++ b/build_scripts/main.py
-@@ -515,7 +515,7 @@ class PysideBuild(_build):
+--- pyside-setup-everywhere-src-5.11.2/build_scripts/main.py~	2018-09-07 10:25:52.000000000 +0000
++++ pyside-setup-everywhere-src-5.11.2/build_scripts/main.py	2018-12-04 15:21:51.108731819 +0000
+@@ -535,7 +535,7 @@
          py_executable = sys.executable
          py_version = "{}.{}".format(sys.version_info[0], sys.version_info[1])
          py_include_dir = get_config_var("INCLUDEPY")
@@ -23,6 +9,3 @@ index 4d9f95b1..f91c51af 100644
          py_prefix = get_config_var("prefix")
          if not py_prefix or not os.path.exists(py_prefix):
              py_prefix = sys.prefix
--- 
-2.22.0
-

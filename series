@@ -1,1 +1,2 @@
-0001-Fix-build-in-Clear.patch
+build.patch
+0001-Dirty-fix-to-find-Clang-headers-in-Clear.patch

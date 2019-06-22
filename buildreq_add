@@ -11,7 +11,7 @@ libxslt-dev
 llvm
 llvm-dev
 numpy
-pyside2-setup-dev
+#pyside2-setup-dev
 python3-dev
 qtbase-dev
 qtwebengine-dev
