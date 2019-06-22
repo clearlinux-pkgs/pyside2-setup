@@ -4,7 +4,7 @@
 #
 Name     : pyside2-setup
 Version  : 5.12.4
-Release  : 22
+Release  : 23
 URL      : http://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.12.4-src/pyside-setup-everywhere-src-5.12.4.tar.xz
 Source0  : http://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.12.4-src/pyside-setup-everywhere-src-5.12.4.tar.xz
 Summary  : Support library for Python bindings of Qt5-based libraries.
@@ -32,6 +32,7 @@ BuildRequires : libxslt-dev
 BuildRequires : llvm
 BuildRequires : llvm-dev
 BuildRequires : numpy
+BuildRequires : pyside2-setup-dev
 BuildRequires : python3
 BuildRequires : python3-dev
 BuildRequires : qtbase-dev
@@ -127,7 +128,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1561229382
+export SOURCE_DATE_EPOCH=1561231553
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -140,7 +141,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1561229382
+export SOURCE_DATE_EPOCH=1561231553
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pyside2-setup
 cp LICENSE.FDL %{buildroot}/usr/share/package-licenses/pyside2-setup/LICENSE.FDL
@@ -164,7 +165,7 @@ pushd clr-build
 %make_install
 popd
 ## install_append content
-stage=1
+stage=2
 if [ $stage -gt 1 ]; then
 pushd sources/shiboken2
 mkdir build
