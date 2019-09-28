@@ -1,3 +1,4 @@
+libGL.so.1
 libQt53DAnimation.so.5
 libQt53DCore.so.5
 libQt53DExtras.so.5
@@ -41,6 +42,7 @@ libc.so.6
 libclang.so.8
 libgcc_s.so.1
 libm.so.6
+libpthread.so.0
 libstdc++.so.6
 libxml2.so.2
 libxslt.so.1
