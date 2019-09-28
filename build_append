@@ -1,5 +1,5 @@
 # -*- sh -*-
-stage=3
+stage=5
 
 if [ $stage -gt 1 ]; then
     pushd sources/shiboken2
