@@ -1,0 +1,20 @@
+# -*- sh -*-
+stage=2
+
+if [ $stage -gt 1 ]; then
+    pushd sources/shiboken2/build
+    %make_install
+    popd
+fi
+
+if [ $stage -gt 2 ]; then
+    pushd sources/pyside2/build
+    %make_install
+    popd
+fi
+
+if [ $stage -gt 3 ]; then
+    pushd sources/pyside2-tools/build
+    %make_install
+    popd
+fi
