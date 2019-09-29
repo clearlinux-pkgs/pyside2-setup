@@ -1,4 +1,4 @@
-From 42619d906eb795b66c28f703a25621cafe102296 Mon Sep 17 00:00:00 2001
+From f35ecb4b8622a50f08795f4791019e9dec66df97 Mon Sep 17 00:00:00 2001
 From: Thiago Macieira <thiago.macieira@intel.com>
 Date: Sat, 16 Mar 2019 08:36:28 -0700
 Subject: [PATCH] Fix build in Clear
@@ -11,7 +11,7 @@ located, not where the library itself is. (/usr/lib/python3.7 vs
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/build_scripts/main.py b/build_scripts/main.py
-index 4d9f95b1..f91c51af 100644
+index 05e9b0f7..f682acef 100644
 --- a/build_scripts/main.py
 +++ b/build_scripts/main.py
 @@ -515,7 +515,7 @@ class PysideBuild(_build):
@@ -24,5 +24,5 @@ index 4d9f95b1..f91c51af 100644
          if not py_prefix or not os.path.exists(py_prefix):
              py_prefix = sys.prefix
 -- 
-2.22.0
+2.23.0
 

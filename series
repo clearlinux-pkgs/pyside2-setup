@@ -1,3 +1,2 @@
-build.patch
-0001-Dirty-fix-to-find-Clang-headers-in-Clear.patch
-0002-shiboken-Fix-build-with-Qt-5.13.patch
+0001-Fix-build-in-Clear.patch
+0002-Force-use-of-python3.patch

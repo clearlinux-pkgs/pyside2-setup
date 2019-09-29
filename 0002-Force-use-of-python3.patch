@@ -1,0 +1,28 @@
+From 0e81c3a83578a512de7a43f243348493ce6e1378 Mon Sep 17 00:00:00 2001
+From: Thiago Macieira <thiago.macieira@intel.com>
+Date: Sat, 22 Jun 2019 12:45:44 -0700
+Subject: [PATCH] Force use of python3
+
+I don't know why ${PYTHON_EXECUTABLE} is wrong.
+
+Signed-off-by: Thiago Macieira <thiago.macieira@intel.com>
+---
+ sources/pyside2/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sources/pyside2/CMakeLists.txt b/sources/pyside2/CMakeLists.txt
+index 16038594..1871da25 100644
+--- a/sources/pyside2/CMakeLists.txt
++++ b/sources/pyside2/CMakeLists.txt
+@@ -39,7 +39,7 @@ set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
+   ${PYSIDE_VERSION_FILE_PATH}
+ )
+ execute_process(
+-  COMMAND ${PYTHON_EXECUTABLE} "${PYSIDE_VERSION_FILE_PATH}"
++  COMMAND python3 "${PYSIDE_VERSION_FILE_PATH}"
+   OUTPUT_VARIABLE PYSIDE_VERSION_OUTPUT
+   ERROR_VARIABLE PYSIDE_VERSION_OUTPUT_ERROR
+   OUTPUT_STRIP_TRAILING_WHITESPACE)
+-- 
+2.23.0
+
