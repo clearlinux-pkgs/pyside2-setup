@@ -4,7 +4,7 @@
 #
 Name     : pyside2-setup
 Version  : 5.13.1
-Release  : 37
+Release  : 39
 URL      : http://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.13.1-src/pyside-setup-everywhere-src-5.13.1.tar.xz
 Source0  : http://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.13.1-src/pyside-setup-everywhere-src-5.13.1.tar.xz
 Summary  : Support library for Python bindings of Qt5-based libraries.
@@ -121,6 +121,7 @@ python3 components for the pyside2-setup package.
 
 %prep
 %setup -q -n pyside-setup-everywhere-src-5.13.1
+cd %{_builddir}/pyside-setup-everywhere-src-5.13.1
 %patch1 -p1
 %patch2 -p1
 
@@ -129,7 +130,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569732187
+export SOURCE_DATE_EPOCH=1573537901
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -169,26 +170,26 @@ popd
 fi
 ## build_append end
 %install
-export SOURCE_DATE_EPOCH=1569732187
+export SOURCE_DATE_EPOCH=1573537901
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pyside2-setup
-cp LICENSE.FDL %{buildroot}/usr/share/package-licenses/pyside2-setup/LICENSE.FDL
-cp LICENSE.GPL2 %{buildroot}/usr/share/package-licenses/pyside2-setup/LICENSE.GPL2
-cp LICENSE.GPLv3 %{buildroot}/usr/share/package-licenses/pyside2-setup/LICENSE.GPLv3
-cp LICENSE.GPLv3-EXCEPT %{buildroot}/usr/share/package-licenses/pyside2-setup/LICENSE.GPLv3-EXCEPT
-cp LICENSE.LGPLv3 %{buildroot}/usr/share/package-licenses/pyside2-setup/LICENSE.LGPLv3
-cp sources/patchelf/COPYING %{buildroot}/usr/share/package-licenses/pyside2-setup/sources_patchelf_COPYING
-cp sources/pyside2-tools/LICENSE-lupdate %{buildroot}/usr/share/package-licenses/pyside2-setup/sources_pyside2-tools_LICENSE-lupdate
-cp sources/pyside2-tools/LICENSE-rcc %{buildroot}/usr/share/package-licenses/pyside2-setup/sources_pyside2-tools_LICENSE-rcc
-cp sources/pyside2-tools/LICENSE-uic %{buildroot}/usr/share/package-licenses/pyside2-setup/sources_pyside2-tools_LICENSE-uic
-cp sources/pyside2/COPYING %{buildroot}/usr/share/package-licenses/pyside2-setup/sources_pyside2_COPYING
-cp sources/pyside2/PySide2/licensecomment.txt %{buildroot}/usr/share/package-licenses/pyside2-setup/sources_pyside2_PySide2_licensecomment.txt
-cp sources/pyside2/doc/codesnippets/examples/dialogs/licensewizard/licensewizard.h %{buildroot}/usr/share/package-licenses/pyside2-setup/sources_pyside2_doc_codesnippets_examples_dialogs_licensewizard_licensewizard.h
-cp sources/shiboken2/ApiExtractor/COPYING %{buildroot}/usr/share/package-licenses/pyside2-setup/sources_shiboken2_ApiExtractor_COPYING
-cp sources/shiboken2/COPYING %{buildroot}/usr/share/package-licenses/pyside2-setup/sources_shiboken2_COPYING
-cp sources/shiboken2/COPYING.libsample %{buildroot}/usr/share/package-licenses/pyside2-setup/sources_shiboken2_COPYING.libsample
-cp sources/shiboken2/COPYING.libshiboken %{buildroot}/usr/share/package-licenses/pyside2-setup/sources_shiboken2_COPYING.libshiboken
-cp sources/shiboken2/libshiboken/embed/qt_python_license.txt %{buildroot}/usr/share/package-licenses/pyside2-setup/sources_shiboken2_libshiboken_embed_qt_python_license.txt
+cp %{_builddir}/pyside-setup-everywhere-src-5.13.1/LICENSE.FDL %{buildroot}/usr/share/package-licenses/pyside2-setup/61907422fefcd2313a9b570c31d203a6dbebd333
+cp %{_builddir}/pyside-setup-everywhere-src-5.13.1/LICENSE.GPL2 %{buildroot}/usr/share/package-licenses/pyside2-setup/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/pyside-setup-everywhere-src-5.13.1/LICENSE.GPLv3 %{buildroot}/usr/share/package-licenses/pyside2-setup/7d974f34cf5fd474f0fdf6ebc8d410ea5c8b72de
+cp %{_builddir}/pyside-setup-everywhere-src-5.13.1/LICENSE.GPLv3-EXCEPT %{buildroot}/usr/share/package-licenses/pyside2-setup/e93757aefa405f2c9a8a55e780ae9c39542dfc3a
+cp %{_builddir}/pyside-setup-everywhere-src-5.13.1/LICENSE.LGPLv3 %{buildroot}/usr/share/package-licenses/pyside2-setup/3e14af11ba18dbb289fda3a9f35d7519536c3594
+cp %{_builddir}/pyside-setup-everywhere-src-5.13.1/sources/patchelf/COPYING %{buildroot}/usr/share/package-licenses/pyside2-setup/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/pyside-setup-everywhere-src-5.13.1/sources/pyside2-tools/LICENSE-lupdate %{buildroot}/usr/share/package-licenses/pyside2-setup/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/pyside-setup-everywhere-src-5.13.1/sources/pyside2-tools/LICENSE-rcc %{buildroot}/usr/share/package-licenses/pyside2-setup/831885f4ef4eccb4965bcddee48f0de3b5aea2d1
+cp %{_builddir}/pyside-setup-everywhere-src-5.13.1/sources/pyside2-tools/LICENSE-uic %{buildroot}/usr/share/package-licenses/pyside2-setup/b53bc3fd83f7813a57d2dbf06898fc3eeb54469c
+cp %{_builddir}/pyside-setup-everywhere-src-5.13.1/sources/pyside2/COPYING %{buildroot}/usr/share/package-licenses/pyside2-setup/2d209c3df5b6b8a8549da5992e89eece382434f5
+cp %{_builddir}/pyside-setup-everywhere-src-5.13.1/sources/pyside2/PySide2/licensecomment.txt %{buildroot}/usr/share/package-licenses/pyside2-setup/36707a948d90e9430e03bd38f76c1518c666fd8a
+cp %{_builddir}/pyside-setup-everywhere-src-5.13.1/sources/pyside2/doc/codesnippets/examples/dialogs/licensewizard/licensewizard.h %{buildroot}/usr/share/package-licenses/pyside2-setup/9751352206358b0b052360705c08a011222a82e8
+cp %{_builddir}/pyside-setup-everywhere-src-5.13.1/sources/shiboken2/ApiExtractor/COPYING %{buildroot}/usr/share/package-licenses/pyside2-setup/831885f4ef4eccb4965bcddee48f0de3b5aea2d1
+cp %{_builddir}/pyside-setup-everywhere-src-5.13.1/sources/shiboken2/COPYING %{buildroot}/usr/share/package-licenses/pyside2-setup/831885f4ef4eccb4965bcddee48f0de3b5aea2d1
+cp %{_builddir}/pyside-setup-everywhere-src-5.13.1/sources/shiboken2/COPYING.libsample %{buildroot}/usr/share/package-licenses/pyside2-setup/2d209c3df5b6b8a8549da5992e89eece382434f5
+cp %{_builddir}/pyside-setup-everywhere-src-5.13.1/sources/shiboken2/COPYING.libshiboken %{buildroot}/usr/share/package-licenses/pyside2-setup/2d209c3df5b6b8a8549da5992e89eece382434f5
+cp %{_builddir}/pyside-setup-everywhere-src-5.13.1/sources/shiboken2/libshiboken/embed/qt_python_license.txt %{buildroot}/usr/share/package-licenses/pyside2-setup/2ef8b491360bc83acc58e2142c37c5dd7313e71d
 pushd clr-build
 %make_install
 popd
@@ -414,47 +415,42 @@ fi
 /usr/include/shiboken2/typespec.h
 /usr/include/shiboken2/voidptr.h
 /usr/lib64/cmake/PySide2-5.13.1/PySide2Config.cmake
-/usr/lib64/cmake/PySide2-5.13.1/PySide2Config.cpython-37m-x86_64-linux-gnu.cmake
+/usr/lib64/cmake/PySide2-5.13.1/PySide2Config.cpython-38-x86_64-linux-gnu.cmake
 /usr/lib64/cmake/PySide2-5.13.1/PySide2ConfigVersion.cmake
 /usr/lib64/cmake/PySide2-5.13.1/PySide2Targets-relwithdebinfo.cmake
 /usr/lib64/cmake/PySide2-5.13.1/PySide2Targets.cmake
 /usr/lib64/cmake/Shiboken2-5.13.1/Shiboken2Config.cmake
-/usr/lib64/cmake/Shiboken2-5.13.1/Shiboken2Config.cpython-37m-x86_64-linux-gnu.cmake
+/usr/lib64/cmake/Shiboken2-5.13.1/Shiboken2Config.cpython-38-x86_64-linux-gnu.cmake
 /usr/lib64/cmake/Shiboken2-5.13.1/Shiboken2ConfigVersion.cmake
 /usr/lib64/cmake/Shiboken2-5.13.1/Shiboken2Targets-relwithdebinfo.cmake
 /usr/lib64/cmake/Shiboken2-5.13.1/Shiboken2Targets.cmake
 /usr/lib64/cmake/Shiboken2-5.13.1/shiboken_helpers.cmake
-/usr/lib64/libpyside2.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/libshiboken2.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/libpyside2.cpython-38-x86_64-linux-gnu.so
+/usr/lib64/libshiboken2.cpython-38-x86_64-linux-gnu.so
 /usr/lib64/pkgconfig/pyside2.pc
 /usr/lib64/pkgconfig/shiboken2.pc
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libpyside2.cpython-37m-x86_64-linux-gnu.so.5.13
-/usr/lib64/libpyside2.cpython-37m-x86_64-linux-gnu.so.5.13.1
-/usr/lib64/libshiboken2.cpython-37m-x86_64-linux-gnu.so.5.13
-/usr/lib64/libshiboken2.cpython-37m-x86_64-linux-gnu.so.5.13.1
+/usr/lib64/libpyside2.cpython-38-x86_64-linux-gnu.so.5.13
+/usr/lib64/libpyside2.cpython-38-x86_64-linux-gnu.so.5.13.1
+/usr/lib64/libshiboken2.cpython-38-x86_64-linux-gnu.so.5.13
+/usr/lib64/libshiboken2.cpython-38-x86_64-linux-gnu.so.5.13.1
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/pyside2-setup/LICENSE.FDL
-/usr/share/package-licenses/pyside2-setup/LICENSE.GPL2
-/usr/share/package-licenses/pyside2-setup/LICENSE.GPLv3
-/usr/share/package-licenses/pyside2-setup/LICENSE.GPLv3-EXCEPT
-/usr/share/package-licenses/pyside2-setup/LICENSE.LGPLv3
-/usr/share/package-licenses/pyside2-setup/sources_patchelf_COPYING
-/usr/share/package-licenses/pyside2-setup/sources_pyside2-tools_LICENSE-lupdate
-/usr/share/package-licenses/pyside2-setup/sources_pyside2-tools_LICENSE-rcc
-/usr/share/package-licenses/pyside2-setup/sources_pyside2-tools_LICENSE-uic
-/usr/share/package-licenses/pyside2-setup/sources_pyside2_COPYING
-/usr/share/package-licenses/pyside2-setup/sources_pyside2_PySide2_licensecomment.txt
-/usr/share/package-licenses/pyside2-setup/sources_pyside2_doc_codesnippets_examples_dialogs_licensewizard_licensewizard.h
-/usr/share/package-licenses/pyside2-setup/sources_shiboken2_ApiExtractor_COPYING
-/usr/share/package-licenses/pyside2-setup/sources_shiboken2_COPYING
-/usr/share/package-licenses/pyside2-setup/sources_shiboken2_COPYING.libsample
-/usr/share/package-licenses/pyside2-setup/sources_shiboken2_COPYING.libshiboken
-/usr/share/package-licenses/pyside2-setup/sources_shiboken2_libshiboken_embed_qt_python_license.txt
+/usr/share/package-licenses/pyside2-setup/2d209c3df5b6b8a8549da5992e89eece382434f5
+/usr/share/package-licenses/pyside2-setup/2ef8b491360bc83acc58e2142c37c5dd7313e71d
+/usr/share/package-licenses/pyside2-setup/36707a948d90e9430e03bd38f76c1518c666fd8a
+/usr/share/package-licenses/pyside2-setup/3e14af11ba18dbb289fda3a9f35d7519536c3594
+/usr/share/package-licenses/pyside2-setup/4cc77b90af91e615a64ae04893fdffa7939db84c
+/usr/share/package-licenses/pyside2-setup/61907422fefcd2313a9b570c31d203a6dbebd333
+/usr/share/package-licenses/pyside2-setup/7d974f34cf5fd474f0fdf6ebc8d410ea5c8b72de
+/usr/share/package-licenses/pyside2-setup/831885f4ef4eccb4965bcddee48f0de3b5aea2d1
+/usr/share/package-licenses/pyside2-setup/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+/usr/share/package-licenses/pyside2-setup/9751352206358b0b052360705c08a011222a82e8
+/usr/share/package-licenses/pyside2-setup/b53bc3fd83f7813a57d2dbf06898fc3eeb54469c
+/usr/share/package-licenses/pyside2-setup/e93757aefa405f2c9a8a55e780ae9c39542dfc3a
 
 %files man
 %defattr(0644,root,root,0755)
