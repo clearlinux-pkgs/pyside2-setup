@@ -4,7 +4,7 @@
 #
 Name     : pyside2-setup
 Version  : 5.13.1
-Release  : 39
+Release  : 40
 URL      : http://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.13.1-src/pyside-setup-everywhere-src-5.13.1.tar.xz
 Source0  : http://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.13.1-src/pyside-setup-everywhere-src-5.13.1.tar.xz
 Summary  : Support library for Python bindings of Qt5-based libraries.
