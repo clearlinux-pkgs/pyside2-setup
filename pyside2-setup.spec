@@ -4,7 +4,7 @@
 #
 Name     : pyside2-setup
 Version  : 5.14.0
-Release  : 45
+Release  : 46
 URL      : http://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.14.0-src/pyside-setup-opensource-src-5.14.0.tar.xz
 Source0  : http://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.14.0-src/pyside-setup-opensource-src-5.14.0.tar.xz
 Summary  : Support library for Python bindings created with the Shiboken2 generator.
@@ -134,7 +134,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1580266673
+export SOURCE_DATE_EPOCH=1580273572
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -177,7 +177,7 @@ popd
 fi
 ## build_append end
 %install
-export SOURCE_DATE_EPOCH=1580266673
+export SOURCE_DATE_EPOCH=1580273572
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pyside2-setup
 cp %{_builddir}/pyside-setup-opensource-src-5.14.0/LICENSE.FDL %{buildroot}/usr/share/package-licenses/pyside2-setup/61907422fefcd2313a9b570c31d203a6dbebd333
@@ -200,6 +200,10 @@ cp %{_builddir}/pyside-setup-opensource-src-5.14.0/sources/shiboken2/libshiboken
 pushd clr-build
 %make_install
 popd
+## Remove excluded files
+rm -f %{buildroot}/usr/bin/designer
+rm -f %{buildroot}/usr/bin/rcc
+rm -f %{buildroot}/usr/bin/uic
 ## install_append content
 stage=1
 
@@ -227,13 +231,10 @@ fi
 
 %files bin
 %defattr(-,root,root,-)
-/usr/bin/designer
 /usr/bin/pyside2-lupdate
 /usr/bin/pyside_tool.py
-/usr/bin/rcc
 /usr/bin/shiboken2
 /usr/bin/shiboken_tool.py
-/usr/bin/uic
 
 %files data
 %defattr(-,root,root,-)
