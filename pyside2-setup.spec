@@ -4,7 +4,7 @@
 #
 Name     : pyside2-setup
 Version  : 5.14.1
-Release  : 48
+Release  : 49
 URL      : https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.14.1-src/pyside-setup-opensource-src-5.14.1.tar.xz
 Source0  : https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.14.1-src/pyside-setup-opensource-src-5.14.1.tar.xz
 Summary  : Support library for Python bindings created with the Shiboken2 generator.
@@ -43,6 +43,7 @@ BuildRequires : qtwebengine-dev
 BuildRequires : scikit-image
 Patch1: 0001-Fix-build-in-Clear.patch
 Patch2: 0002-Force-use-of-python3.patch
+Patch3: 0003-shiboken-Support-Clang-version-10.patch
 
 %description
 PatchELF is a simple utility for modifing existing ELF executables and
@@ -128,19 +129,20 @@ python3 components for the pyside2-setup package.
 cd %{_builddir}/pyside-setup-opensource-src-5.14.1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1580926478
+export SOURCE_DATE_EPOCH=1588697686
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 %cmake ..
 make  %{?_smp_mflags}  VERBOSE=1
@@ -177,7 +179,7 @@ popd
 fi
 ## build_append end
 %install
-export SOURCE_DATE_EPOCH=1580926478
+export SOURCE_DATE_EPOCH=1588697686
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pyside2-setup
 cp %{_builddir}/pyside-setup-opensource-src-5.14.1/LICENSE.FDL %{buildroot}/usr/share/package-licenses/pyside2-setup/61907422fefcd2313a9b570c31d203a6dbebd333
