@@ -4,7 +4,7 @@
 #
 Name     : pyside2-setup
 Version  : 5.15.0
-Release  : 55
+Release  : 56
 URL      : https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.15.0-src/pyside-setup-opensource-src-5.15.0.tar.xz
 Source0  : https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.15.0-src/pyside-setup-opensource-src-5.15.0.tar.xz
 Summary  : Support library for Python bindings created with the Shiboken2 generator.
@@ -145,7 +145,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1590687840
+export SOURCE_DATE_EPOCH=1608010880
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -154,7 +154,7 @@ export FCFLAGS="$FFLAGS -fno-lto "
 export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 %cmake ..
-make  %{?_smp_mflags}  VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 ## build_append content
@@ -188,7 +188,7 @@ popd
 fi
 ## build_append end
 %install
-export SOURCE_DATE_EPOCH=1590687840
+export SOURCE_DATE_EPOCH=1608010880
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pyside2-setup
 cp %{_builddir}/pyside-setup-opensource-src-5.15.0/LICENSE.FDL %{buildroot}/usr/share/package-licenses/pyside2-setup/61907422fefcd2313a9b570c31d203a6dbebd333
@@ -444,27 +444,27 @@ fi
 /usr/include/shiboken2/typespec.h
 /usr/include/shiboken2/voidptr.h
 /usr/lib64/cmake/PySide2-5.15.0/PySide2Config.cmake
-/usr/lib64/cmake/PySide2-5.15.0/PySide2Config.cpython-38-x86_64-linux-gnu.cmake
+/usr/lib64/cmake/PySide2-5.15.0/PySide2Config.cpython-39-x86_64-linux-gnu.cmake
 /usr/lib64/cmake/PySide2-5.15.0/PySide2ConfigVersion.cmake
 /usr/lib64/cmake/PySide2-5.15.0/PySide2Targets-relwithdebinfo.cmake
 /usr/lib64/cmake/PySide2-5.15.0/PySide2Targets.cmake
 /usr/lib64/cmake/Shiboken2-5.15.0/Shiboken2Config.cmake
-/usr/lib64/cmake/Shiboken2-5.15.0/Shiboken2Config.cpython-38-x86_64-linux-gnu.cmake
+/usr/lib64/cmake/Shiboken2-5.15.0/Shiboken2Config.cpython-39-x86_64-linux-gnu.cmake
 /usr/lib64/cmake/Shiboken2-5.15.0/Shiboken2ConfigVersion.cmake
 /usr/lib64/cmake/Shiboken2-5.15.0/Shiboken2Targets-relwithdebinfo.cmake
 /usr/lib64/cmake/Shiboken2-5.15.0/Shiboken2Targets.cmake
 /usr/lib64/cmake/Shiboken2-5.15.0/shiboken_helpers.cmake
-/usr/lib64/libpyside2.cpython-38-x86_64-linux-gnu.so
-/usr/lib64/libshiboken2.cpython-38-x86_64-linux-gnu.so
+/usr/lib64/libpyside2.cpython-39-x86_64-linux-gnu.so
+/usr/lib64/libshiboken2.cpython-39-x86_64-linux-gnu.so
 /usr/lib64/pkgconfig/pyside2.pc
 /usr/lib64/pkgconfig/shiboken2.pc
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libpyside2.cpython-38-x86_64-linux-gnu.so.5.15
-/usr/lib64/libpyside2.cpython-38-x86_64-linux-gnu.so.5.15.0
-/usr/lib64/libshiboken2.cpython-38-x86_64-linux-gnu.so.5.15
-/usr/lib64/libshiboken2.cpython-38-x86_64-linux-gnu.so.5.15.0
+/usr/lib64/libpyside2.cpython-39-x86_64-linux-gnu.so.5.15
+/usr/lib64/libpyside2.cpython-39-x86_64-linux-gnu.so.5.15.0
+/usr/lib64/libshiboken2.cpython-39-x86_64-linux-gnu.so.5.15
+/usr/lib64/libshiboken2.cpython-39-x86_64-linux-gnu.so.5.15.0
 
 %files license
 %defattr(0644,root,root,0755)
