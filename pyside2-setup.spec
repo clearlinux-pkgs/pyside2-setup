@@ -4,7 +4,7 @@
 #
 Name     : pyside2-setup
 Version  : 5.15.2
-Release  : 63
+Release  : 64
 URL      : https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.15.2-src/pyside-setup-opensource-src-5.15.2.tar.xz
 Source0  : https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.15.2-src/pyside-setup-opensource-src-5.15.2.tar.xz
 Summary  : Support library for Python bindings created with the Shiboken2 generator.
@@ -42,7 +42,6 @@ BuildRequires : llvm
 BuildRequires : llvm-dev
 BuildRequires : matplotlib
 BuildRequires : numpy
-BuildRequires : pyside2-setup-dev
 BuildRequires : python3
 BuildRequires : python3-dev
 BuildRequires : qtbase-dev
@@ -145,7 +144,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1618942831
+export SOURCE_DATE_EPOCH=1631052940
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -188,7 +187,7 @@ popd
 fi
 ## build_append end
 %install
-export SOURCE_DATE_EPOCH=1618942831
+export SOURCE_DATE_EPOCH=1631052940
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pyside2-setup
 cp %{_builddir}/pyside-setup-opensource-src-5.15.2/LICENSE.FDL %{buildroot}/usr/share/package-licenses/pyside2-setup/61907422fefcd2313a9b570c31d203a6dbebd333
