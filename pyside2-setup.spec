@@ -4,7 +4,7 @@
 #
 Name     : pyside2-setup
 Version  : 5.15.2
-Release  : 65
+Release  : 66
 URL      : https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.15.2-src/pyside-setup-opensource-src-5.15.2.tar.xz
 Source0  : https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.15.2-src/pyside-setup-opensource-src-5.15.2.tar.xz
 Summary  : Support library for Python bindings created with the Shiboken2 generator.
