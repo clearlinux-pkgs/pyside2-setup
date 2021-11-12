@@ -1,0 +1,85 @@
+From 2a90a4acdac7fea41cdc4411ba27489abe124a0f Mon Sep 17 00:00:00 2001
+From: William Douglas <william.douglas@intel.com>
+Date: Fri, 12 Nov 2021 12:32:37 -0800
+Subject: [PATCH] py3.10-prep: Fix parser.py for changed typing module
+
+Patch based on
+https://codereview.qt-project.org/gitweb?p=pyside/pyside-setup.git;a=patch;h=2530cb3f165ac02b8f7132e3f5ab4f7f6896dbd9
+ported to pyside2.
+
+Signed-off-by: William Douglas <william.douglas@intel.com>
+---
+ .../shibokensupport/signature/lib/tool.py         |  8 ++++++++
+ .../files.dir/shibokensupport/signature/parser.py | 15 +++------------
+ 2 files changed, 11 insertions(+), 12 deletions(-)
+
+diff --git a/sources/shiboken2/shibokenmodule/files.dir/shibokensupport/signature/lib/tool.py b/sources/shiboken2/shibokenmodule/files.dir/shibokensupport/signature/lib/tool.py
+index 24e75e4..5e4b52e 100644
+--- a/sources/shiboken2/shibokenmodule/files.dir/shibokensupport/signature/lib/tool.py
++++ b/sources/shiboken2/shibokenmodule/files.dir/shibokensupport/signature/lib/tool.py
+@@ -47,6 +47,7 @@ On the function with_metaclass see the answer from Martijn Pieters on
+ https://stackoverflow.com/questions/18513821/python-metaclass-understanding-the-with-metaclass
+ """
+ 
++from inspect import currentframe
+ from textwrap import dedent
+ 
+ 
+@@ -151,4 +152,11 @@ def with_metaclass(meta, *bases):
+             return meta.__prepare__(name, bases)
+     return type.__new__(metaclass, 'temporary_class', (), {})
+ 
++
++# A handy tool that shows the current line number and indents.
++def lno(level):
++    lineno = currentframe().f_back.f_lineno
++    spaces = level * "  "
++    return f"{lineno}{spaces}"
++
+ # eof
+diff --git a/sources/shiboken2/shibokenmodule/files.dir/shibokensupport/signature/parser.py b/sources/shiboken2/shibokenmodule/files.dir/shibokensupport/signature/parser.py
+index 20c791c..7200dc2 100644
+--- a/sources/shiboken2/shibokenmodule/files.dir/shibokensupport/signature/parser.py
++++ b/sources/shiboken2/shibokenmodule/files.dir/shibokensupport/signature/parser.py
+@@ -43,10 +43,11 @@ import sys
+ import re
+ import warnings
+ import types
++import typing
+ import keyword
+ import functools
+ from shibokensupport.signature.mapping import (type_map, update_mapping,
+-    namespace, typing, _NotCalled, ResultVariable, ArrayLikeVariable)
++    namespace, _NotCalled, ResultVariable, ArrayLikeVariable)
+ from shibokensupport.signature.lib.tool import (SimpleNamespace,
+     build_brace_pattern)
+ 
+@@ -222,7 +223,7 @@ def _resolve_arraytype(thing, line):
+ def to_string(thing):
+     if isinstance(thing, str):
+         return thing
+-    if hasattr(thing, "__name__"):
++    if hasattr(thing, "__name__") and thing.__module__ != "typing":
+         dot = "." in str(thing)
+         name = get_name(thing)
+         return thing.__module__ + "." + name if dot else name
+@@ -239,16 +240,6 @@ def handle_matrix(arg):
+     return eval(result, namespace)
+ 
+ 
+-debugging_aid = """
+-from inspect import currentframe
+-
+-def lno(level):
+-    lineno = currentframe().f_back.f_lineno
+-    spaces = level * "  "
+-    return "{lineno}{spaces}".format(**locals())
+-"""
+-
+-
+ def _resolve_type(thing, line, level, var_handler):
+     # Capture total replacements, first. Happens in
+     # "PySide2.QtCore.QCborStreamReader.StringResult[PySide2.QtCore.QByteArray]"
+-- 
+2.33.0
+

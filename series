@@ -1,2 +1,4 @@
 0001-Fix-build-in-Clear.patch
 0002-Force-use-of-python3.patch
+0003-Work-with-python3.10.patch
+0004-py3.10-prep-Fix-parser.py-for-changed-typing-module.patch
