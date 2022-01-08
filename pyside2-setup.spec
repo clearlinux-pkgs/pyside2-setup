@@ -4,7 +4,7 @@
 #
 Name     : pyside2-setup
 Version  : 5.15.2
-Release  : 68
+Release  : 69
 URL      : https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.15.2-src/pyside-setup-opensource-src-5.15.2.tar.xz
 Source0  : https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.15.2-src/pyside-setup-opensource-src-5.15.2.tar.xz
 Summary  : Support library for Python bindings created with the Shiboken2 generator.
@@ -17,16 +17,6 @@ Requires: pyside2-setup-license = %{version}-%{release}
 Requires: pyside2-setup-man = %{version}-%{release}
 Requires: pyside2-setup-python = %{version}-%{release}
 Requires: pyside2-setup-python3 = %{version}-%{release}
-Requires: PyOpenGL
-Requires: Sphinx
-Requires: matplotlib
-Requires: numpy
-Requires: scikit-image
-Requires: setuptools
-Requires: six
-Requires: wheel
-BuildRequires : PyOpenGL
-BuildRequires : Sphinx
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-distutils3
 BuildRequires : buildreq-kde
@@ -40,17 +30,19 @@ BuildRequires : libxslt
 BuildRequires : libxslt-dev
 BuildRequires : llvm
 BuildRequires : llvm-dev
-BuildRequires : matplotlib
-BuildRequires : numpy
+BuildRequires : pypi(matplotlib)
+BuildRequires : pypi(numpy)
+BuildRequires : pypi(pyopengl)
+BuildRequires : pypi(scikit_image)
+BuildRequires : pypi(setuptools)
+BuildRequires : pypi(six)
+BuildRequires : pypi(sphinx)
+BuildRequires : pypi(wheel)
 BuildRequires : python3
 BuildRequires : python3-dev
 BuildRequires : qtbase-dev
 BuildRequires : qtbase-dev mesa-dev
 BuildRequires : qtwebengine-dev
-BuildRequires : scikit-image
-BuildRequires : setuptools
-BuildRequires : six
-BuildRequires : wheel
 Patch1: 0001-Fix-build-in-Clear.patch
 Patch2: 0002-Force-use-of-python3.patch
 Patch3: 0003-Work-with-python3.10.patch
@@ -148,7 +140,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1636749919
+export SOURCE_DATE_EPOCH=1641677024
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -191,7 +183,7 @@ popd
 fi
 ## build_append end
 %install
-export SOURCE_DATE_EPOCH=1636749919
+export SOURCE_DATE_EPOCH=1641677024
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pyside2-setup
 cp %{_builddir}/pyside-setup-opensource-src-5.15.2/LICENSE.FDL %{buildroot}/usr/share/package-licenses/pyside2-setup/61907422fefcd2313a9b570c31d203a6dbebd333

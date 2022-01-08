@@ -1,6 +1,5 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
-Sphinx
 buildreq-kde
 graphviz
 idna
@@ -10,7 +9,8 @@ libxslt
 libxslt-dev
 llvm
 llvm-dev
-numpy
+pypi(sphinx)
+pypi(numpy)
 python3-dev
 qtbase-dev
 qtwebengine-dev
