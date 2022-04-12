@@ -40,7 +40,7 @@ libQt5X11Extras.so.5
 libQt5Xml.so.5
 libQt5XmlPatterns.so.5
 libc.so.6
-libclang.so.11.1
+libclang.so.13
 libgcc_s.so.1
 libm.so.6
 libstdc++.so.6

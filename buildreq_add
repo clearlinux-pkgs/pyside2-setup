@@ -2,7 +2,7 @@
 # picked up automatically. One name per line, no whitespace.
 buildreq-kde
 graphviz
-idna
+pypi-idna
 libxml2
 libxml2-dev
 libxslt
