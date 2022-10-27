@@ -1,0 +1,13 @@
+--- pyside-setup-opensource-src-5.15.2/sources/shiboken2/libshiboken/sbknumpyarrayconverter.cpp~	2020-11-11 12:51:30.000000000 +0000
++++ pyside-setup-opensource-src-5.15.2/sources/shiboken2/libshiboken/sbknumpyarrayconverter.cpp	2022-10-27 14:02:16.679053703 +0000
+@@ -116,8 +116,8 @@
+             str << " NPY_ARRAY_NOTSWAPPED";
+         if ((flags & NPY_ARRAY_WRITEABLE) != 0)
+             str << " NPY_ARRAY_WRITEABLE";
+-        if ((flags & NPY_ARRAY_UPDATEIFCOPY) != 0)
+-            str << " NPY_ARRAY_UPDATEIFCOPY";
++        if ((flags & NPY_ARRAY_WRITEBACKIFCOPY) != 0)
++            str << " NPY_ARRAY_WRITEBACKIFCOPY ";
+     } else {
+         str << '0';
+     }

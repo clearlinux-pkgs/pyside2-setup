@@ -1,9 +1,0 @@
-5.15.2
-pypi(matplotlib)
-pypi(opencv_python)
-pypi(pyinstaller)
-pypi(pyopengl)
-pypi(scikit_image)
-pypi(setuptools)
-pypi(six)
-pypi(wheel)
